@@ -1,21 +1,20 @@
-function computerPlay() {
+function computerSelection() {
   let play = Math.floor(Math.random() * 3);
   let computerChoice;
 
   switch (play) {
     case 0:
-      computerChoice = "Rock";
+      return (computerChoice = "ROCK");
       break;
     case 1:
-      computerChoice = "Paper";
+      return (computerChoice = "PAPER");
       break;
     case 2:
-      computerChoice = "Scissors";
+      return (computerChoice = "SCISSORS");
       break;
     default:
       break;
   }
-  return computerChoice.toUpperCase;
 }
 
 function playerSelection() {
@@ -35,4 +34,34 @@ function playerSelection() {
   return playerChoice;
 }
 
-function playRound() {}
+function playRound(playerSelection, computerSelection) {
+  let roundWon = "Undecided";
+
+  if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
+    roundWon = "Player";
+  } else if (computerSelection === "ROCK" && playerSelection === "SCISSORS") {
+    roundWon = "Computer Won";
+  } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {
+    roundWon = "Computer Won";
+  } else if (computerSelection === "ROCK" && playerSelection === "PAPER") {
+    roundWon = "Player Won";
+  } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+    roundWon = "Player Won";
+  } else if (computerSelection === "SCISSORS" && playerSelection === "PAPER") {
+    roundWon = "Computer Won";
+  } else if (playerSelection === "PAPER" && computerSelection === "PAPER") {
+    roundWon = "Tie";
+  } else if (playerSelection === "ROCK" && computerSelection === "ROCK") {
+    roundWon = "Tie";
+  } else if (
+    playerSelection === "SCISSORS" &&
+    computerSelection === "SCISSORS"
+  ) {
+    roundWon = "Tie";
+  }
+  return alert(roundWon);
+}
+
+function game() {
+  playRound(playerSelection(), computerSelection());
+}
