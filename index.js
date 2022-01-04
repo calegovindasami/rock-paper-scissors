@@ -26,6 +26,7 @@ const computer = document.querySelector(".computerPoints");
 
 btns.forEach((button) => {
   button.addEventListener("click", () => {
+    winner.setAttribute("style", "font-size: 24px");
     winner.textContent = playRound(button.id, computerSelection());
     computer.textContent = computerCounter;
     player.textContent = playerCounter;
@@ -82,12 +83,12 @@ function game() {
   if (playerCounter === 5) {
     playerCounter = 0;
     computerCounter = 0;
-    winner.setAttribute("style", "font-size: 50px");
+    winner.setAttribute("style", "font-size: 36px");
     winner.textContent = "THE PLAYER HAS WON";
   } else if (computerCounter === 5) {
     playerCounter = 0;
     computerCounter = 0;
-    winner.setAttribute("style", "font-size: 50px");
+    winner.setAttribute("style", "font-size: 50px; font-weight: bold");
     winner.textContent = "THE COMPUTER HAS WON";
   }
 }
