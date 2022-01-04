@@ -5,50 +5,66 @@ function computerSelection() {
   switch (play) {
     case 0:
       return (computerChoice = "ROCK");
-      break;
+
     case 1:
       return (computerChoice = "PAPER");
-      break;
+
     case 2:
       return (computerChoice = "SCISSORS");
-      break;
+
     default:
       break;
   }
 }
 
-function playerSelection() {
-  let playerChoice = prompt("Enter ROCK - PAPER - SCISSORS").toUpperCase();
+const btns = document.querySelectorAll(".rps");
+let playerCounter = 0;
+let computerCounter = 0;
+const winner = document.querySelector(".winner");
+const player = document.querySelector(".playerPoints");
+const computer = document.querySelector(".computerPoints");
 
-  while (
-    !(
-      playerChoice === "ROCK" ||
-      playerChoice === "PAPER" ||
-      playerChoice === "SCISSORS"
-    )
-  ) {
-    alert("INVALID CHOICE " + playerChoice);
-    playerChoice = prompt("Enter ROCK - PAPER - SCISSORS").toUpperCase();
-  }
+btns.forEach((button) => {
+  button.addEventListener("click", () => {
+    winner.textContent = playRound(button.id, computerSelection());
+    computer.textContent = computerCounter;
+    player.textContent = playerCounter;
+    game();
+  });
+});
 
-  return playerChoice;
+function playerSelection(choice) {
+  return choice;
+}
+function plusPlayerPoint() {
+  ++playerCounter;
+}
+
+function plusComputerPoint() {
+  ++computerCounter;
 }
 
 function playRound(playerSelection, computerSelection) {
   let roundWon = "Undecided";
 
   if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
-    roundWon = "Player";
+    roundWon = "Round Winner: Player";
+    plusPlayerPoint();
   } else if (computerSelection === "ROCK" && playerSelection === "SCISSORS") {
-    roundWon = "Computer Won";
+    roundWon = "Round Winner: Computer";
+    plusComputerPoint();
   } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {
-    roundWon = "Computer Won";
+    roundWon = "Round Winner: Computer";
+    plusComputerPoint();
   } else if (computerSelection === "ROCK" && playerSelection === "PAPER") {
-    roundWon = "Player Won";
+    roundWon = "Round Winner: Player";
+    plusPlayerPoint();
   } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-    roundWon = "Player Won";
+    roundWon = "Round Winner: Player";
+    plusPlayerPoint();
   } else if (computerSelection === "SCISSORS" && playerSelection === "PAPER") {
-    roundWon = "Computer Won";
+    roundWon = "Round Winner: Computer";
+    plusComputerPoint();
   } else if (playerSelection === "PAPER" && computerSelection === "PAPER") {
     roundWon = "Tie";
   } else if (playerSelection === "ROCK" && computerSelection === "ROCK") {
@@ -59,9 +75,19 @@ function playRound(playerSelection, computerSelection) {
   ) {
     roundWon = "Tie";
   }
-  return alert(roundWon);
+  return roundWon;
 }
 
 function game() {
-  playRound(playerSelection(), computerSelection());
+  if (playerCounter === 5) {
+    playerCounter = 0;
+    computerCounter = 0;
+    winner.setAttribute("style", "font-size: 50px");
+    winner.textContent = "THE PLAYER HAS WON";
+  } else if (computerCounter === 5) {
+    playerCounter = 0;
+    computerCounter = 0;
+    winner.setAttribute("style", "font-size: 50px");
+    winner.textContent = "THE COMPUTER HAS WON";
+  }
 }

@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Common Pixel", sans-serif;
+}
+
+body {
+  background-color: black;
+}
+/* Header Style */
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  padding-top: 25px;
+  gap: 10px;
+  font-family: "Common Pixel", sans-serif;
+  margin-bottom: 150px;
+}
+#header h1 {
+  font-size: 72px;
+}
+#header h2 {
+  font-size: 32px;
+}
+
+/* Points */
+.content .points {
+  color: white;
+  display: flex;
+  font-size: 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  margin-bottom: 100px;
+}
+
+/* Buttons */
+.content .buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  gap: 200px;
+  margin-bottom: 150px;
+}
+.buttons button {
+  padding: 150px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.buttons #ROCK {
+  background-image: url(./images/rock.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.buttons button:hover {
+  transform: scale(1.1);
+  opacity: 0.5;
+  transition: 0.3s;
+}
+.buttons #PAPER {
+  background-image: url(./images/paper.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.buttons #SCISSORS {
+  background-image: url(./images/scissors.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.winner {
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
